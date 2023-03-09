@@ -1,2 +1,2 @@
 #!/bin/bash
-m /tmp/better /tmp/my_first_directory
+m /tmp/betty /tmp/my_first_directory
