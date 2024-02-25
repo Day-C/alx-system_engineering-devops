@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #This script displys content of current directory  in list format
 l=$(ls)
-for item in ${l[@]}
+for item in "${l[@]}";
 do
-	echo $item
+	echo "$item"
 done
