@@ -2,7 +2,7 @@
 #kill an infinite process using sigkill
 
 #get pid of the process
-id=$(pgrep "bash ./4-to_infinity_and_beqond" -f)
+id=$(pgrep "bash ./4-to_infinity_and_beyond" -f)
 
 #kill the process 
 if [ -n "$id" ]
