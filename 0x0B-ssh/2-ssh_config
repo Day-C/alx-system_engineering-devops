@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Script configures client to connect server through ssh without password
+HOST web-01
+	Hostname 54.157.187.181
+	User ubuntu
+	IdentityFile ~/.ssh/school
+	PasswordAuthentication no
