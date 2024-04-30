@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#Script configures 2 servers bo be identical
+#!/usr/bin/env bash
+#Scrit installs nginx and querry  nginxat root with GET reguest.. using curl
+#update server
+sudo apt update
+#install nginx
+sudo apt-get -y install nginx
+#allow server to listen on port 80
+sudo ufw allow 'Nginx HTTP'
+#create a page containing 'helloworld!'
+echo 'Hello World' | sudo tee /var/www/html/index.html
+#remode the /etc/nginx/sites-enabled/default
+sudo rm /etc/nginx/sites-enabled/default
+#dynamicly linke link /etc/nginx/sites-availabe/ default to ../sites-enabled/
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+#restart the server
+sudo systemctl restart nginx
