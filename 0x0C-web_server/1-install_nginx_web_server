@@ -3,10 +3,10 @@
 #update server
 sudo apt update
 #install nginx
-sudo apt-get -y install nginx
+sudo apt-get install -y nginx
 #allow server to listen on port 80
 sudo ufw allow 'Nginx HTTP'
-#create a page containing 'helloworld!'
-echo 'Hello World' | sudo tee /var/www/html/index.html
+#create an html file 'index.html' containing 'hello World!'
+echo 'Hello World!' | sudo tee /var/www/html/index.html
 #restart the server
 sudo systemctl restart nginx
