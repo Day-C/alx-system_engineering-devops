@@ -3,7 +3,7 @@
 #update server
 sudo apt update
 #install nginx
-sudo apt-get install -y nginx
+sudo apt-get -y install nginx
 #allow server to listen on port 80
 sudo ufw allow 'Nginx HTTP'
 #create an html file 'index.html' containing 'hello World!'
