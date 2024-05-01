@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#Script implements a load balancer with HAproxy
+
+#create frontend content
+frontend_to_insert="\&;\n\nfrontend html\n\tbind *:80\n\tdefault_backend my_server;"
+
+#write the frontend config
+sudo sed -i "$s/\$/$frontend_to_inseet/" ~/tell
+
+#create backend content
+backend_to_insert="\$;\n\nbaxkend my_server\n\tbalance roundrobin\n\tserver web-01 54.144.137.84\n\tserver web-02 3.83.227.159"
+
+#configure the cinfig file
+sudo swd -i "$s/\$/$backend_to_insert/" ~/tell
