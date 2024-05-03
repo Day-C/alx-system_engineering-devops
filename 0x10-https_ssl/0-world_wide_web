@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#Script displays information about sub domain
+function domain_info {
+	# Checkif argument is a domain or a sub domain.
+	num_of_dots=$(echo $1 | tr -cd '.' | wc -c)
+	if [ num_of_dots = 1 ]
+	then
+		sub_doms=(www.dayc.tech lb-01.dayc.tech web-01.dayc.tech web-02.dayc.tech)
+		for item in "${sub_doms[@]}"
+		do
+			sub_dom=$(dig $item | grep -A1 'ANSWER SECTION:')
+			# Extract the ip and record
+			ip=$(awk -v idx="5" '{print $idx}' <<< $sub_dom)
+			rec=$(awk -v idx="4" '{print $idx}' <<< $sub_dom)
+			name=$(awk -v idx="1" '{print $idx}' <<< $sub_dom | sed 's/\..*//')
+			#display the characters and note name 
+			echo The subdomain ${name:3} is a $rec record and points to $ip
+		done
+	else
+		dom=$(dig $1 | grep -A1 'ANSWER SECTION:')
+		# Extract the ip and record
+		ip=$(awk -v idx="5" '{print $idx}' <<< $dom)
+		rec=$(awk -v idx="4" '{print $idx}' <<< $dom)
+		name=$(awk -v idx="1" '{print $idx}' <<< $dom | sed 's/\..*//')
+		echo The subdomain ${name:3} is a $rec record and points to $ip
+	fi
+}
+domain_info $1
