@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#debug nginx server not listenning at port 80
+sudo ln -sf /etc/nginx/sites-available/default etc/nginx/sistes-enabled/default
+sudo systemctl restart nginx
+sudo kill "$(pgrep 'nginx' | head -1)"
