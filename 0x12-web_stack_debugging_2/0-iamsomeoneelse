@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script create a new user from command line argument
+#Script create a new user from command line argument
 if [ $1 ]
 then
 	echo 'God bless you'
