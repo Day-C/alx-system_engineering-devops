@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Script create a new user from command line argument
+if [ $1 ]
+then
+	echo 'God bless you'
+	useradd -m $1
+	su $1 -c whoami
+else
+	exit
+fi
