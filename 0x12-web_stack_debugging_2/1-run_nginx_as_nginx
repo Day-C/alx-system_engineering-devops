@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#Script creates a less privileged user to run nginx for security reasons
+# Create a user
+sudo useradd --system --no-create-home --shell /bin/false --group nginx
+#configure nginx.conf
+
