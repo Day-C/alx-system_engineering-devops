@@ -1,0 +1,4 @@
+#!/usr/bin/env
+#create user
+sudo useradd "$1"
+whoami "$1"
