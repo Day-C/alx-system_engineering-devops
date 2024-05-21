@@ -15,7 +15,7 @@ def save_as_csv(id):
     # Get user info
     response1 = requests.get(f'{user_url}/{id}')
     user_info = dict(response1.json())
-    name = user_info['name']
+    name = user_info['username']
 
     # Get todo list info
     response2 = requests.get(f'{list_url}?userId={id}')
@@ -25,7 +25,7 @@ def save_as_csv(id):
     for i in range(len(data)):
         completed = data[i].get('completed')
         title = data[i].get('title')
-        csv = f'"{id}", "{name}", "{completed}", "{title}"\n'
+        csv = f'"{id}","{name}","{completed}","{title}"\n'
 
         with open(filename, 'a') as f:
             f.write(csv)
