@@ -7,28 +7,30 @@ import sys
 def show_todo(id):
     '''Show_todo display the todo into about a user with id=id.'''
 
-    # get todo info
-    url = f'https://jsonplaceholder.typicode.com/todos?userId={id}'
+    user_url = 'https://jsonplaceholder.typicode.com/users'
+    todo_url = 'https://jsonplaceholder.typicode.com/todos'
 
-    response1 = requests.get(url)
-    data = response1.json()
-    tal = len(data)
-    complt = 0
+    # Get user info
+    user_response = requests.get(f'{user_url}/{id}')
+    user_info = dict(user_response.json())
+    name = user_info.get('name')
 
-    for i in range(len(data)):
-        if data[i].get('completed') is True:
-            complt += 1
+    # get todo list info
+    list_response = requests.get(f'{todo_url}?userId={id}')
+    tasks = list_response.json()
 
-    # get user info
-    url = f'https://jsonplaceholder.typicode.com/users/{id}'
-    response2 = requests.get(url)
-    info = dict(response2.json())
-    user_name = info.get('name')
-    text = f'Employee {user_name} is done with tasks'
-    print(f'{text}({complt}/{tal}')
-    for item in range(len(data)):
-        if data[item].get('completed') is True:
-            print('\t', data[item].get('title'))
+    # count completed tasks
+    complete = 0
+    total = len(tasks)
+    for i in range(len(tasks)):
+        if tasks[i].get('completed') is True:
+            complete += 1
+
+    # Display info about users todo list
+    print(f'Employee {name} is done with tasks{complete}/{total}:')
+    for item in range(len(tasks)):
+        if tasks[item].get('completed') is True:
+            print('\t', tasks[item].get('title'))
 
 
 if __name__ == "__main__":
