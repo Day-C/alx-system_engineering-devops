@@ -27,7 +27,7 @@ def show_todo(id):
             complete += 1
 
     # Display info about users todo list
-    print(f'Employee {name} is done with tasks{complete}/{total}:')
+    print(f'Employee {name} is done with tasks({complete}/{total}):')
     for item in range(len(tasks)):
         if tasks[item].get('completed') is True:
             print('\t', tasks[item].get('title'))
