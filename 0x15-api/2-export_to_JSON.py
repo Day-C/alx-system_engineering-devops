@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 '''Script exports user info into file.'''
+import json
 import requests
 import sys
-import json
 
 
 def save_to_json(id):
@@ -24,12 +24,15 @@ def save_to_json(id):
     # organize the data
     tasks = []
     tsk = {}
+    count = 0
     for item in range(len(data)):
         tsk['task'] = data[item].get('title')
         tsk['completed'] = data[item].get('completed')
         tsk['username'] = name
         tasks.append(tsk)
+        count += 1
 
+    print(count)
     display = {}
     display[id] = tasks
     # export to file
