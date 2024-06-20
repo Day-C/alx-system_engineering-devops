@@ -1,10 +1,10 @@
 #!usr/bin/python3
-'''query api and for info on a subject.'''
+'''Query api and for info on a subject.'''
 import requests
 
 
 def number_of_subscribers(subreddit):
-    '''query Reddit API for number of subscribers.'''
+    '''Query Reddit API for number of subscribers.'''
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64)"}
