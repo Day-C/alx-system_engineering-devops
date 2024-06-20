@@ -1,19 +1,17 @@
-#!usr/bin/python3
-"""Query api and for info on a subject"""
+#!/usr/bin/python3
+"""Module for task 0"""
+import requests
 
 
 def number_of_subscribers(subreddit):
-    """Query Reddit API for number of subscribers of a 
-    subreddit kjdflkdkljfldkjfl;dkjlfjdlfkjdlkjkldfjlkjdlkjdklj"""
-    import requests
+    """Queries the Reddit API and returns the number of subscribers
+    to the subreddit"""
 
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64)"}
+    sub_info = requests.get("https://www.reddit.com/r/{}/about.json"
+                            .format(subreddit),
+                            headers={"User-Agent": "My-User-Agent"},
+                            allow_redirects=False)
+    if sub_info.status_code >= 300:
+        return 0
 
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code > 300:
-        return (0)
-    else:
-        response = response.json()
-        data = response.data
-        print(data.subscribers)
+    return sub_info.json().get("data").get("subscribers")
