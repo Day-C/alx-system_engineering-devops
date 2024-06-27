@@ -14,5 +14,10 @@ echo 'Hello World' | sudo tee /var/www/html/index.html
 sudo rm /etc/nginx/sites-enabled/default
 #dynamicly linke link /etc/nginx/sites-availabe/ default to ../sites-enabled/
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-#restart the server
+#Add a custom Nginx response header to server
+replace_with="server_name _;\n\tadd_header X-Served-By $HOSTNAME;"
+sudo sed -i "s/server_name _;/$replace_with/" /etc/nginx/sites-enabled/default
+#test for error
+sudo nginx -t
+#restart nginx
 sudo systemctl restart nginx
