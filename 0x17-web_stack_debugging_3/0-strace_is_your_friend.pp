@@ -3,7 +3,6 @@
   fiexes an error in one of its files that is causing an thhp 500 error
 */
 
-#ensure Apache is installed
 package { 'apache2':
   ensure  => 'installed',
 }
