@@ -3,7 +3,7 @@ server{
         server_name dayc.tech;
 
         location /airbnb-onepage/ {
-                proxy_pass http://localhost:5000/airbnb-onepage/;
+                proxy_pass http://localhost:5000;
                 proxy_set_header Host $hostl;
                 proxy_set_header X-Real-IP $remote_addr;
 	}
